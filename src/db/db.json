@@ -1,0 +1,24 @@
+{
+  "customers": [
+    {
+      "avatar": "/images/user2.png",
+      "firstName": "test12",
+      "lastName": "test12",
+      "company": "Test12233",
+      "status": "admin",
+      "email": "boboqulovrasul80@gmail.com",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "avatar": "/images/user4.png",
+      "firstName": "test12xx",
+      "lastName": "test134",
+      "company": "Test134",
+      "status": "user",
+      "email": "boboqulovrasul80@gmail.com12",
+      "password": "2345",
+      "id": 2
+    }
+  ]
+}
