@@ -71,3 +71,6 @@
   border-radius: 20px;
   transition: all 0.2s linear;
 }
+.invalidValidationtColor{
+  color: red !important;
+}

@@ -22,6 +22,13 @@ const Home = () => {
   const showPassBtn = useRef();
   const editModal = useRef();
 
+  //select element validation and error
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const companyRef = useRef();
+  const emailRef = useRef();
+  const validationPass=useRef()
+
   useEffect(() => {
     closePassBtn.current.style.display = "none";
     getCustomers();
@@ -39,6 +46,49 @@ const Home = () => {
 
   // Create New customer ===========================================================================
   const addCustomer = () => {
+    if (firstNameRef.current.value.length == 0) {
+      firstNameRef.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red'>Required</span>"
+      );
+      return;
+    } else if (firstNameRef.current.value.length > 0) {
+      firstNameRef.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red; display:none'>Required</span>"
+      );
+    }
+    if (lastNameRef.current.value.length == 0) {
+      lastNameRef.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red'>Required</span>"
+      );
+      return;
+    }
+    if (companyRef.current.value.length == 0) {
+      companyRef.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red'>Required</span>"
+      );
+      return;
+    }
+    if (emailRef.current.value.length == 0) {
+      companyRef.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red'>Required</span>"
+      );
+      return;
+    }
+    if (
+      psswordRef.current.value.length == 0 ||
+      psswordRef.current.value.length < 8
+    ) {
+      validationPass.current.insertAdjacentHTML(
+        "afterend",
+        "<span className='position-absolute top-0 start-0' style='color:red'>Required (Min +8 characters)</span>"
+      );
+      return;
+    }
     setCustomers([...customers, newCustomer]);
     setNewCustomer({});
     axios
@@ -97,9 +147,7 @@ const Home = () => {
       <div className="container-fluid px-0">
         {/* ==================================================== UPDATE MODAL ======================================== */}
         <div className="editModal " ref={editModal}>
-          <div className="postition-relative">
-     
-          </div>
+          <div className="postition-relative"></div>
           <h3 className="sidebarTitle">Edit Customer</h3>
           <form>
             <div className="row mb-4">
@@ -236,8 +284,9 @@ const Home = () => {
                     First Name
                   </label>
                   <input
+                    ref={firstNameRef}
                     type="text"
-                    className="form-control"
+                    className="form-control postition-relative"
                     id="firstName"
                     value={newCustomer.firstName || ""}
                     onChange={(e) =>
@@ -258,17 +307,18 @@ const Home = () => {
                     Last Name
                   </label>
                   <input
+                    ref={lastNameRef}
                     type="text"
-                    className="form-control"
+                    className="form-control "
                     id="lastName"
                     value={newCustomer.lastName || ""}
+                    required
                     onChange={(e) =>
                       setNewCustomer({
                         ...newCustomer,
                         lastName: e.target.value,
                       })
                     }
-                    required
                   />
                 </div>
               </div>
@@ -277,14 +327,15 @@ const Home = () => {
                   Company
                 </label>
                 <input
+                  ref={companyRef}
                   type="text"
                   className="form-control"
                   id="company"
                   value={newCustomer.company || ""}
+                  required
                   onChange={(e) =>
                     setNewCustomer({ ...newCustomer, company: e.target.value })
                   }
-                  required
                 />
               </div>
 
@@ -319,6 +370,7 @@ const Home = () => {
                   Eamil
                 </label>
                 <input
+                  ref={emailRef}
                   type="email"
                   className="form-control"
                   id="email"
@@ -330,14 +382,14 @@ const Home = () => {
                 />
               </div>
 
-              <div className="passwordForm mb-4">
+              <div className="passwordForm mb-4 postition-relative">
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
-                <span className="w-100 d-flex align-items-center  p-0 ">
+                <span className="w-100 d-flex align-items-center p-0 postition-relative" ref={validationPass}>
                   <input
                     type="password"
-                    className=" form-control w-100"
+                    className=" form-control w-100 "
                     id="password"
                     minLength={8}
                     required
@@ -411,7 +463,7 @@ const Home = () => {
                                 className="rounded-circle"
                               />
                               <div className="ms-3">
-                                <p className="fw-bold m-0">{el.name}</p>
+                                <p className="fw-bold m-0">{el.firstName}</p>
                               </div>
                             </div>
                           </td>
