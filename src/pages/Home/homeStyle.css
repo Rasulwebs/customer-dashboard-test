@@ -1,32 +1,32 @@
 .wrappAllInfo {
   display: flex;
 }
-.sidebarMenu, .editModal {
+.sidebarMenu,
+.editModal {
   /* max-width: 512px; */
   min-width: 512px;
   padding: 40px;
-  
 }
-.editModal{
+.editModal {
   transition: all 0.3s linear;
   background-color: #fff;
   position: absolute;
   left: -600px;
   top: 0;
   z-index: 10;
-  min-height:100vh ;
+  min-height: 100vh;
 }
 .userTable {
   width: 100%;
   padding: 40px;
 }
-.noCursor{
-    cursor: default !important;
+.noCursor {
+  cursor: default !important;
 }
 /* change status style */
 
 .theme .label {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
   position: relative;
   display: flex;
   align-items: center;
@@ -53,17 +53,16 @@
 }
 .theme .statusUser {
   z-index: 2;
-
 }
 .theme .statusAdmin {
   z-index: 2;
-
 }
 .theme .ball {
   width: 50%;
   height: 30px;
   background: #fff;
-  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.10), 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
   position: absolute;
   top: 2px;
@@ -71,6 +70,6 @@
   border-radius: 20px;
   transition: all 0.2s linear;
 }
-.invalidValidationtColor{
+.invalidValidationtColor {
   color: red !important;
 }

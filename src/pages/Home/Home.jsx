@@ -27,7 +27,7 @@ const Home = () => {
   const lastNameRef = useRef();
   const companyRef = useRef();
   const emailRef = useRef();
-  const validationPass=useRef()
+  const validationPass = useRef();
 
   useEffect(() => {
     closePassBtn.current.style.display = "none";
@@ -386,7 +386,10 @@ const Home = () => {
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
-                <span className="w-100 d-flex align-items-center p-0 postition-relative" ref={validationPass}>
+                <span
+                  className="w-100 d-flex align-items-center p-0 postition-relative"
+                  ref={validationPass}
+                >
                   <input
                     type="password"
                     className=" form-control w-100 "
